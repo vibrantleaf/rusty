@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  rusty_build:
+    image: rust:1-bullseye
+    build:
+      context: .
+    container_name: rusty_build
+    restart: no
+    stdin_open: true
+    tty: true
+    environment:
+        - "UID=69"
+        - "GID=69"
+    volumes:
+      - .:/usr/src/rusty
+      - ./BIN:/usr/local/bin/rusty
+    working_dir: /usr/src/myapp
